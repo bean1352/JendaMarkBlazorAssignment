@@ -1,0 +1,65 @@
+﻿@using JendamarkBlazorAssignment.Models;
+@using System.IO;
+
+<div class="simple-form">
+
+    <div class="form-group">
+        <label for="first-name">Operation Name</label>
+        <input @bind="Name" type="text" class="form-control" id="first-name" placeholder="Enter Name" />
+    </div>
+
+    <div class="form-group">
+        <label for="last-name">Operation Order In which to perform</label>
+        <input @bind="OrderInWhichToPerform" type="number" step="1" class="form-control" pattern="\d+" id="last-name" placeholder="Enter Order" />
+    </div>
+
+    <div class="form-group">
+        <label for="last-name">Image</label>
+        @*<input id="oFile" type="file" runat="server" NAME="oFile" @bind="Image">*@
+        <InputFile OnChange="@SingleUpload" />
+    </div>
+
+    <button @onclick="SubmitForm" class="btn btn-primary">Submit</button>
+    <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
+</div>
+
+@code {
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+
+    private byte[] _image;
+
+    bool ShowForm { get; set; } = true;
+    string Name { get; set; }
+    int OrderInWhichToPerform { get; set; }
+    byte[] Image { get; set; }
+    int FormId { get; set; }
+
+    void SubmitForm()
+    {
+        var parameters = new ModalParameters();
+        parameters.Add("Name", Name);
+        parameters.Add("Order", OrderInWhichToPerform.ToString());
+        if (Image is not null)
+        {
+            parameters.Add("Image", Image);
+        }
+
+
+
+        ModalInstance.CloseAsync(ModalResult.Ok(parameters));
+
+    }
+
+    void Cancel()
+    {
+        ModalInstance.CancelAsync();
+    }
+
+    private async Task SingleUpload(InputFileChangeEventArgs e)
+    {
+        MemoryStream ms = new MemoryStream();
+        await e.File.OpenReadStream().CopyToAsync(ms);
+        Image = ms.ToArray();
+    }
+
+}
