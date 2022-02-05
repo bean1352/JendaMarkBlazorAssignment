@@ -8,15 +8,15 @@
 @inject State State
 
 
-<table class="table">
+<table class="styled-table">
     <thead>
         <tr>
             <th><button class="btn btn-primary" @onclick="@(() => AddNewOperation())">Add</button></th>
-            <th>Operation ID</th>
+            <th colspan="9">Operation ID</th>
             <th>Name</th>
             <th>Order in which to perform</th>
             <th>Image</th>
-            <th>Device ID</th>
+            <th colspan="9">Device ID</th>
             <th>Device Name</th>
             <th>Device Type</th>
         </tr>
@@ -24,17 +24,17 @@
     <tbody>
         @foreach (var operation in operations)
         {
-            <tr>
+            <tr class="active-row">
                 <td>
-                    <button @onclick="@(() => Edit(operation))"><img src="Images/edit.png" height="30" width="30" /></button>
-                    <button @onclick="@(() => Remove(operation.OperationID))"><img src="Images/delete.png" height="30" width="30" /></button>
+                    <button class="buttonInTable" @onclick="@(() => Edit(operation))"><img src="Images/edit.png" height="30" width="30" /></button>
+                    <button class="buttonInTable" @onclick="@(() => Remove(operation.OperationID))"><img src="Images/delete.png" height="30" width="30" /></button>
                 </td>
 
-                <td>@operation.OperationID</td>
+                <td colspan="9">@operation.OperationID</td>
                 <td>@operation.Name</td>
                 <td>@operation.OrderInWhichToPerform</td>
                 <td><img src="@operation.ImageDataUrl" width="30" height="30" /></td>
-                <td>@operation.Device.DeviceID</td>
+                <td colspan="9">@operation.Device.DeviceID</td>
                 <td>@operation.Device.Name</td>
                 <td>@operation.Device.DeviceType</td>
             </tr>
