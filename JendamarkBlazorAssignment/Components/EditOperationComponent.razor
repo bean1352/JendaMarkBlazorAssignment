@@ -1,35 +1,36 @@
 ﻿@using JendamarkBlazorAssignment.Models;
 @using System.ComponentModel.DataAnnotations;
 @using System.IO;
+@inject State State
 
 <div class="simple-form">
 
     <div class="form-group">
-        <label for="first-name"><b>Operation Name</b></label>
-        <input @bind="operation.Name" type="text" class="form-control" id="name" placeholder="Enter Name" required />
+        <label for="@operation.Name"><b>Operation Name</b></label>
+        <input @bind-value="operation.Name" type="text" class="form-control" id="name" placeholder="Enter Name" />
     </div>
 
     <div class="form-group">
         <label for="last-name"><b>Operation Order In which to perform</b></label>
-        <input @bind="operation.OrderInWhichToPerform" type="number" step="1" class="form-control" pattern="\d+" id="operationi" placeholder="Enter Order" />
+        <input @bind-value="operation.OrderInWhichToPerform" type="number" step="1" class="form-control" pattern="\d+" id="operationi" placeholder="Enter Order" />
     </div>
 
     <div class="form-group">
         <label for="last-name"><b>Image</b></label>
         <br />
-        <InputFile OnChange="@SingleUpload" required />
+        <InputFile @bind-value="operation.ImageData" OnChange="@SingleUpload" required />
     </div>
 
     <div class="form-group">
         <label for="device-name"><b>Device Name</b></label>
-        <input @bind="operation.Device.Name" type="text" class="form-control" id="device-name" placeholder="Enter Device Name" />
+        <input @bind-value="operation.Device.Name" type="text" class="form-control" id="device-name" placeholder="Enter Device Name" />
     </div>
 
     <div class="form-group">
         <label for="device-type"><b>Device Type</b></label>
         <br />
         <select @bind="operation.Device.DeviceType">
-            @foreach (var template in Enum.GetValues(typeof(DeviceType)).Cast<DeviceType>()) 
+            @foreach (var template in Enum.GetValues(typeof(DeviceType)).Cast<DeviceType>())
             {
                 <option value=@template>@template</option>
             }
@@ -47,10 +48,10 @@
     private Operation operation { get; set; } = new Operation();
 
     int FormId { get; set; }
-
     protected override async Task OnInitializedAsync()
     {
-        operation.Device = new Device();
+        operation = State.GlobalOperation;
+        //operation.Device = new Device();
     }
 
     void SubmitForm()
@@ -64,7 +65,10 @@
 
     void Cancel()
     {
-        ModalInstance.CancelAsync();
+        var parameters = new ModalParameters();
+        parameters.Add("Operation", operation);
+
+        ModalInstance.CloseAsync(ModalResult.Ok(parameters));
     }
 
     private async Task SingleUpload(InputFileChangeEventArgs e)
@@ -73,5 +77,4 @@
         await e.File.OpenReadStream().CopyToAsync(ms);
         operation.ImageData = ms.ToArray();
     }
-
 }

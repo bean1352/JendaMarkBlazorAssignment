@@ -1,5 +1,6 @@
 using Blazored.Modal;
 using JendamarkBlazorAssignment.Data;
+using JendamarkBlazorAssignment.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +32,7 @@ namespace JendamarkBlazorAssignment
             services.AddServerSideBlazor();
             services.AddSingleton<OperationService>();
             services.AddBlazoredModal();
+            services.AddSingleton<State>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

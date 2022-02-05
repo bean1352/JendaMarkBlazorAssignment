@@ -30,7 +30,7 @@ namespace JendamarkBlazorAssignment.Data
             return list;
         }
 
-        public Task<Operation[]> GetOperationAsync()
+        public Task<List<Operation>> GetOperationAsync()
         {
             List<byte[]> imageList = GetImages();
 
@@ -43,7 +43,7 @@ namespace JendamarkBlazorAssignment.Data
                 OrderInWhichToPerform = index,
                 ImageData = imageList[index],
                 ImageDataUrl = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(imageList[index]))
-            }).ToArray());
+            }).ToList());
         }
     }
 }

@@ -32,4 +32,8 @@ namespace JendamarkBlazorAssignment.Models
         Camera,
         SocketTray
     }
+    public class State
+    {
+        public Operation GlobalOperation { get; set; } = new Operation();
+    }
 }

@@ -5,6 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\Images\assemble.png" />
+    <Content Remove="wwwroot\Images\build.png" />
+    <Content Remove="wwwroot\Images\delete.png" />
+    <Content Remove="wwwroot\Images\edit.png" />
+    <Content Remove="wwwroot\Images\steel.png" />
+    <Content Remove="wwwroot\Images\surgery.png" />
+    <Content Remove="wwwroot\Images\welding.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\assemble.png" />
+    <None Include="wwwroot\Images\build.png" />
+    <None Include="wwwroot\Images\delete.png" />
+    <None Include="wwwroot\Images\edit.png" />
+    <None Include="wwwroot\Images\steel.png" />
+    <None Include="wwwroot\Images\surgery.png" />
+    <None Include="wwwroot\Images\welding.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Blazored.Modal" Version="6.0.1" />
   </ItemGroup>
 

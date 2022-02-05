@@ -58,3 +58,5 @@ C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\b
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\RazorDeclaration\Components\AddOperationComponent.razor.g.cs
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\Razor\Components\AddOperationComponent.razor.g.cs
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\JendamarkBlazorAssignment.csproj.AssemblyReference.cache
+C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\RazorDeclaration\Components\EditOperationComponent.razor.g.cs
+C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\Razor\Components\EditOperationComponent.razor.g.cs

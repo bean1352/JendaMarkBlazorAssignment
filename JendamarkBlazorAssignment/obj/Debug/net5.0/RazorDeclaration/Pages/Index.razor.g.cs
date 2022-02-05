@@ -140,9 +140,9 @@ using System.Text;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 43 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Pages\Index.razor"
+#line 46 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Pages\Index.razor"
        
-    private Operation[] operations;
+    private List<Operation> operations;
 
     [CascadingParameter] public IModalService Modal { get; set; }
 
@@ -153,7 +153,38 @@ using System.Text;
 
     void Remove(Guid operationId)
     {
-        operations = operations.Where(x => x.OperationID != operationId).ToArray();
+        operations = operations.Where(x => x.OperationID != operationId).ToList();
+    }
+
+    async Task Edit(Operation model)
+    {
+        var options = new ModalOptions()
+        {
+            Animation = ModalAnimation.FadeInOut(1),
+            HideCloseButton = false,
+            Class = "blazored-modal-movies"
+        };
+
+        State.GlobalOperation = model;
+
+        var formModel = Modal.Show<EditOperationComponent>("Edit Operation");
+        var result = await formModel.Result;
+
+        operations = operations.Where(x => x.OperationID != model.OperationID).ToList();
+        if (result.Cancelled)
+        {
+            Console.WriteLine("Modal was cancelled");
+        }
+        else
+        {
+            ModalParameters resultModel = result.Data as ModalParameters;
+            var editmodel = resultModel.TryGet<Operation>("Operation");
+            editmodel.ImageDataUrl = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(model.ImageData));
+
+            operations.Add(editmodel);
+
+            operations = operations.OrderBy(x => x.OrderInWhichToPerform).ToList();
+        }
     }
 
     async Task AddNewOperation()
@@ -176,20 +207,19 @@ using System.Text;
         {
             ModalParameters resultModel = result.Data as ModalParameters;
 
-            var name = resultModel.TryGet<string>("Name");
-            var order = resultModel.TryGet<int>("Order");
-            var image = resultModel.TryGet<byte[]>("Image");
+            var model = resultModel.TryGet<Operation>("Operation");
 
-            if (image is null)
+            if (model.ImageData is null)
             {
-                image = new byte[0];
+                model.ImageData = new byte[0];
             }
 
-            CreateNewOperation(name, Convert.ToInt32(order), image);
+
+            CreateNewOperation(model);
 
         }
 
-        void CreateNewOperation(string name, int order, byte[] image)
+        void CreateNewOperation(Operation model)
         {
             List<Operation> list = new List<Operation>();
 
@@ -200,22 +230,21 @@ using System.Text;
 
             list.Add(new Operation
             {
-                Name = name,
-                OrderInWhichToPerform = order,
-                ImageDataUrl = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(image)),
+                Name = model.Name,
+                OrderInWhichToPerform = model.OrderInWhichToPerform,
+                ImageDataUrl = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(model.ImageData)),
                 OperationID = Guid.NewGuid(),
-                Device = new Device() { Name = "Added Device", DeviceID = Guid.NewGuid(), DeviceType = DeviceType.Printer },
+                Device = new Device() { Name = model.Device.Name, DeviceID = Guid.NewGuid(), DeviceType = model.Device.DeviceType },
             });
 
-            list = list.OrderBy(x => x.OrderInWhichToPerform).ToList();
-
-            operations = list.ToArray();
+            list = operations = list.OrderBy(x => x.OrderInWhichToPerform).ToList();
         }
     }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private State State { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private OperationService Service { get; set; }
     }
 }

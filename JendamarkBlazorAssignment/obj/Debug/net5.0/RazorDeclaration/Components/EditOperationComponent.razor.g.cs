@@ -97,27 +97,27 @@ using Blazored.Modal.Services;
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\AddOperationComponent.razor"
+#line 1 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\EditOperationComponent.razor"
 using JendamarkBlazorAssignment.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\AddOperationComponent.razor"
+#line 2 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\EditOperationComponent.razor"
 using System.ComponentModel.DataAnnotations;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\AddOperationComponent.razor"
+#line 3 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\EditOperationComponent.razor"
 using System.IO;
 
 #line default
 #line hidden
 #nullable disable
-    public partial class AddOperationComponent : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class EditOperationComponent : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -125,7 +125,7 @@ using System.IO;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 43 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\AddOperationComponent.razor"
+#line 44 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\EditOperationComponent.razor"
        
     [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
 
@@ -133,10 +133,10 @@ using System.IO;
     private Operation operation { get; set; } = new Operation();
 
     int FormId { get; set; }
-
     protected override async Task OnInitializedAsync()
     {
-        operation.Device = new Device();
+        operation = State.GlobalOperation;
+        //operation.Device = new Device();
     }
 
     void SubmitForm()
@@ -150,7 +150,10 @@ using System.IO;
 
     void Cancel()
     {
-        ModalInstance.CancelAsync();
+        var parameters = new ModalParameters();
+        parameters.Add("Operation", operation);
+
+        ModalInstance.CloseAsync(ModalResult.Ok(parameters));
     }
 
     private async Task SingleUpload(InputFileChangeEventArgs e)
@@ -160,10 +163,10 @@ using System.IO;
         operation.ImageData = ms.ToArray();
     }
 
-
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private State State { get; set; }
     }
 }
 #pragma warning restore 1591
