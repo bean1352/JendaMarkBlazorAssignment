@@ -161,7 +161,7 @@ using System.Text;
         var options = new ModalOptions()
         {
             Animation = ModalAnimation.FadeInOut(1),
-            HideCloseButton = false,
+            HideCloseButton = true,
             Class = "blazored-modal-movies"
         };
 

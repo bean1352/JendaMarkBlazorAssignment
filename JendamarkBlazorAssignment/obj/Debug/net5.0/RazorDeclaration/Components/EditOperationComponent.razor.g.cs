@@ -163,6 +163,14 @@ using System.IO;
         operation.ImageData = ms.ToArray();
     }
 
+    private void ModalClosed(ModalResult modalResult)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add("Operation", operation);
+
+        ModalInstance.CloseAsync(ModalResult.Ok(parameters));
+    }
+
 #line default
 #line hidden
 #nullable disable
