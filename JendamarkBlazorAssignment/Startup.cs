@@ -30,7 +30,6 @@ namespace JendamarkBlazorAssignment
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<OperationService>();
-            services.AddSingleton<WeatherForecastService>();
             services.AddBlazoredModal();
         }
 

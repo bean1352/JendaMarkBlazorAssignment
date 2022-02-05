@@ -18,7 +18,6 @@ C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\o
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\JendamarkBlazorAssignment.RazorComponent.input.cache
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
-C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
@@ -31,7 +30,6 @@ C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\o
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\JendamarkBlazorAssignment.RazorCoreGenerate.cache
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\Razor\App.razor.g.cs
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\Razor\Pages\Counter.razor.g.cs
-C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
@@ -59,3 +57,4 @@ C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\b
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\bin\Debug\net5.0\Microsoft.JSInterop.WebAssembly.dll
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\RazorDeclaration\Components\AddOperationComponent.razor.g.cs
 C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\Razor\Components\AddOperationComponent.razor.g.cs
+C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\obj\Debug\net5.0\JendamarkBlazorAssignment.csproj.AssemblyReference.cache

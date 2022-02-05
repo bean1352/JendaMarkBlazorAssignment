@@ -105,6 +105,13 @@ using JendamarkBlazorAssignment.Models;
 #nullable disable
 #nullable restore
 #line 2 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\AddOperationComponent.razor"
+using System.ComponentModel.DataAnnotations;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\AddOperationComponent.razor"
 using System.IO;
 
 #line default
@@ -118,15 +125,18 @@ using System.IO;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 26 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\AddOperationComponent.razor"
+#line 27 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Components\AddOperationComponent.razor"
        
     [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
 
     private byte[] _image;
 
     bool ShowForm { get; set; } = true;
+    [Required]
     string Name { get; set; }
+    [Required]
     int OrderInWhichToPerform { get; set; }
+    [Required]
     byte[] Image { get; set; }
     int FormId { get; set; }
 
@@ -134,7 +144,7 @@ using System.IO;
     {
         var parameters = new ModalParameters();
         parameters.Add("Name", Name);
-        parameters.Add("Order", OrderInWhichToPerform.ToString());
+        parameters.Add("Order", OrderInWhichToPerform);
         if (Image is not null)
         {
             parameters.Add("Image", Image);

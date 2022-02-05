@@ -140,7 +140,7 @@ using System.Text;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Pages\Index.razor"
+#line 43 "C:\Users\Dean\source\repos\JendamarkBlazorAssignment\JendamarkBlazorAssignment\Pages\Index.razor"
        
     private Operation[] operations;
 
@@ -177,17 +177,15 @@ using System.Text;
             ModalParameters resultModel = result.Data as ModalParameters;
 
             var name = resultModel.TryGet<string>("Name");
-            var order = resultModel.TryGet<string>("Order");
+            var order = resultModel.TryGet<int>("Order");
             var image = resultModel.TryGet<byte[]>("Image");
 
-            if (image is not null)
+            if (image is null)
             {
-                CreateNewOperation(name, Convert.ToInt32(order), image);
+                image = new byte[0];
             }
-            else
-            {
-                CreateNewOperation(name, Convert.ToInt32(order), null);
-            }
+
+            CreateNewOperation(name, Convert.ToInt32(order), image);
 
         }
 
